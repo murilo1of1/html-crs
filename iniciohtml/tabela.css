@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+
+table, tr, td{
+    border: 1px solid black;
+    font-family: "Honk", system-ui;
+    background-color: aquamarine;
+}
+
+table, tr, td:hover{
+    background-color: crimson;
+}
+
+.tamanho{
+    width: 150px;
+}
+
+.fonte{
+    font-family: "Honk", system-ui; 
+}
