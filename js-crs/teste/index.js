@@ -1,7 +1,7 @@
 const formulario = document.getElementById('formulario');
 const tabela = document.getElementById('tabela');
 
-const registroLista = [];
+let registroLista = JSON.parse(localStorage.getItem('registros')) || [];
 
 formulario.addEventListener("submit", (Event) => {
     Event.preventDefault();
@@ -27,6 +27,7 @@ formulario.addEventListener("submit", (Event) => {
 
     registroLista.push(novoRegistro)
     atualizaTabela();
+    salvarDados();
     formulario.reset();
 });
 
@@ -70,9 +71,17 @@ function verificaDuplicado(nome, data) {
 function removerRegistro(index) {
     registroLista.splice(index, 1); 
     atualizaTabela(); 
+    salvarDados();
   }
 
 function marcarConcluido(index) {
     registroLista[index].concluido = true; 
     atualizaTabela();
+    salvarDados();
   }
+
+  function salvarDados() {
+    localStorage.setItem('registros', JSON.stringify(registroLista));  
+  }
+  
+  document.addEventListener('DOMContentLoaded', atualizaTabela);
